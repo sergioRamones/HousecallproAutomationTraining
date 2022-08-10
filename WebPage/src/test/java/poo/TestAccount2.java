@@ -2,7 +2,7 @@ package poo;
 
 import org.testng.annotations.Test;
 
-public class TestAccount {
+public class TestAccount2 {
 	
 	
 	@Test
