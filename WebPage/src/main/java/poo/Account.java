@@ -12,6 +12,9 @@ public class Account {
 	public Account() {
 
 	}
+	public Account(String name) {
+		
+	}
 
 	public Account(String name, String accountNumber, double interest, double balance) {
 		this.name = name;
