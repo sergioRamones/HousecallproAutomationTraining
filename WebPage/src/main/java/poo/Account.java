@@ -4,8 +4,8 @@ public class Account {
 	
 	private String name;
 	private String accountNumber;
-	private double interest;
-	private double balance;
+	private double interest; 
+	private double balance; 
 	
 	
 	
