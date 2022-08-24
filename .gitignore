@@ -27,3 +27,4 @@ hs_err_pid*
 *.png
 *test-output
 .DS_Store
+*chromedriver
