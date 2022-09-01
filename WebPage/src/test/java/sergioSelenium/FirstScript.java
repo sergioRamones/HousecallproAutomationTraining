@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
@@ -27,7 +28,7 @@ public class FirstScript {
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h5"), "Login"));
 		typeText(By.xpath("//*[@name='username']"),"Admin");
 		typeText(By.name("password"),"admin123");
-	
+
 		
 	//	driver.findElement(By.xpath("//*[@name='username']")).sendKeys("Admin");
 //		driver.findElement(By.name("password")).sendKeys("admin123");
@@ -35,11 +36,21 @@ public class FirstScript {
 		driver.findElement(By.xpath("//button[contains(@class,'login')]")).click();
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("oxd-userdropdown-name"))));
 		
-		click(By.xpath("//label[text()='Sub Unit']/parent::*/parent::*//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']"));
-		click(By.xpath("//span[contains(text(),'Development')]"));
+		selectFromDropDown("Sub Unit","Development");
+		selectFromDropDown("Sub Unit","Administration");
 		
+		selectFromDropDown("Employment Status","Full-Time Contract");
+		selectFromDropDown("Job Title","Chief Executive Officer");
 		
 	}
+	
+	
+	public void selectFromDropDown(String SubUnit, String Option) throws InterruptedException {
+		click(By.xpath("//label[text()='"+SubUnit+"']/parent::*/parent::*//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']"));
+		click(By.xpath("//span[contains(text(),'"+Option+"')]"));
+		Thread.sleep(1000);
+	}
+	
 	
 	public void typeText(By locator, String word) {
 		driver.findElement(locator).clear();
