@@ -18,7 +18,7 @@ public class LoginPage extends CommonMethods{
 	@FindBy(xpath="//button[contains(@class,'login')]")
 	WebElement loginBtn;
 	
-	@FindBy(xpath="oxd-userdropdown-name")
+	@FindBy(className ="oxd-userdropdown-name")
 	WebElement userNameLink;
 	
 	
@@ -28,6 +28,7 @@ public class LoginPage extends CommonMethods{
 	}
 	
 	public void login(String user, String password) {
+		reviewElementExist(userNameTxt);
 		type(user,userNameTxt);
 		type(password,passwordTxt);
 		click(loginBtn);

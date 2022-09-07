@@ -114,7 +114,7 @@ public class CommonMethods {
 	}
 	
 	public void click(WebElement element ) {
-		element.clear();
+		element.click();
 	}
 	
 	public void reviewElementExist(WebElement element) {
