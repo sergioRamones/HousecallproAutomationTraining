@@ -11,6 +11,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 public class CommonMethods {
@@ -21,10 +23,12 @@ public class CommonMethods {
 	private String chromeDriver;
 	private String edgeDriver;
 	private String firefoxDriver;
+	private WebDriverWait wait;
 	
 	
-	public CommonMethods() {
+	public CommonMethods(WebDriver driver) {
 		setDriverPaths();
+		this.driver = driver;
 	}
 	
 	public String getOSName() {
@@ -78,7 +82,7 @@ public class CommonMethods {
 	}
 	
 	public WebDriver firefoxDriverConnection(String url) {
-		System.setProperty("webdriver.chrome.driver", chromeDriver);
+		System.setProperty("webdriver.chrome.driver", firefoxDriver);
 		FirefoxOptions option = new FirefoxOptions();
 		option.addArguments("--start-maximized");
 		option.addArguments("--incognito");
@@ -109,5 +113,13 @@ public class CommonMethods {
 		reporter("Text typed",inputText);
 	}
 	
+	public void click(WebElement element ) {
+		element.clear();
+	}
+	
+	public void reviewElementExist(WebElement element) {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
 
 }
