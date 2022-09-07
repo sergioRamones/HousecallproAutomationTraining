@@ -2,13 +2,16 @@ package utility;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.Reporter;
 
 public class CommonMethods {
 	
@@ -52,34 +55,58 @@ public class CommonMethods {
 		}
 	}
 	
-	public WebDriver chromeDriverConnection() {
+	public WebDriver chromeDriverConnection(String url) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
 		ChromeOptions option = new ChromeOptions();
 		option.addArguments("--start-maximized");
 		option.addArguments("--incognito");
 		driver = new ChromeDriver(option);
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200));
+		driver.get(url);
 		return driver;
 	}
 	
-	public WebDriver edgeDriverConnection() {
+	public WebDriver edgeDriverConnection(String url) {
 		System.setProperty("webdriver.edge.driver", edgeDriver);
 		EdgeOptions option = new EdgeOptions();
 		option.addArguments("--start-maximized");
 		option.addArguments("--incognito");
 		driver = new EdgeDriver(option);
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200));
+		driver.get(url);
 		return driver;
 	}
 	
-	public WebDriver firefoxDriverConnection() {
+	public WebDriver firefoxDriverConnection(String url) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
 		FirefoxOptions option = new FirefoxOptions();
 		option.addArguments("--start-maximized");
 		option.addArguments("--incognito");
 		driver = new FirefoxDriver(option);
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200));
+		driver.get(url);
 		return driver;
+	}
+	
+	
+	public WebElement findElement(By locator) {
+		return driver.findElement(locator);
+	}
+	
+	public void reporter(String message, String value) {
+		Reporter.log(message + "<b> [ "+value+ " ] </b>");
+	}
+	
+	public void type(String inputText, By locator) {
+		findElement(locator).clear();
+		findElement(locator).sendKeys(inputText);
+		reporter("Text typed",inputText);
+	}
+	
+	public void type(String inputText, WebElement element) {
+		element.clear();
+		element.sendKeys(inputText);
+		reporter("Text typed",inputText);
 	}
 	
 
