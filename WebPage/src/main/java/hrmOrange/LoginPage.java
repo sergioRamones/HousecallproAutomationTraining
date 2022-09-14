@@ -21,6 +21,9 @@ public class LoginPage extends CommonMethods{
 	@FindBy(className ="oxd-userdropdown-name")
 	WebElement userNameLink;
 	
+	@FindBy(xpath = "//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']")
+	WebElement forgotPassButton;
+	
 	
 	public LoginPage(WebDriver driver) {
 		super(driver);
@@ -33,9 +36,12 @@ public class LoginPage extends CommonMethods{
 		type(password,passwordTxt);
 		click(loginBtn);
 		reviewElementExist(userNameLink);
+	
 	}
 	
-	
-	
+	public void forgotPassword(WebElement element) {
+		reviewElementExist(element);
+		click(element);
+	}
 
 }
