@@ -15,27 +15,32 @@ public class LoginTestMike {
 	
 	private WebDriver driver;
 	LoginPage login;
-	LoginPage forgotPassword;
-	PasswordResetPage validResetPassword;
-	
+	PasswordResetPage passwordResetPage;
+	CommonMethods commonMethods= new CommonMethods();
 	
 	
 	
 	
 	@BeforeTest
 	public void setup() {
-		login = new LoginPage(driver);
-		driver = login.chromeDriverConnection("https://opensource-demo.orangehrmlive.com/");
+	 
+		driver = commonMethods.chromeDriverConnection("https://opensource-demo.orangehrmlive.com/");
 		login = new LoginPage(driver);
 		
 	}
 	
 	@Test
 	public void validPasswordReset() {
-		forgotPassword.forgotPassword(forgotPassButton);
-		validResetPassword.validResetPassword(userNameInput, resetPasswordButton, element3, "TonyTiger");
+		login.forgotPassword();
+		passwordResetPage = new PasswordResetPage(driver);
+		passwordResetPage.validResetPassword("TonyTiger");
 		
 
+	}
+	
+	@Test
+	public void validLogin() {
+		login.login("Admin", "admin123");
 	}
 
 } //end class

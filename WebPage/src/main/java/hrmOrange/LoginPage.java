@@ -39,9 +39,9 @@ public class LoginPage extends CommonMethods{
 	
 	}
 	
-	public void forgotPassword(WebElement element) {
-		reviewElementExist(element);
-		click(element);
+	public void forgotPassword() {
+		reviewElementExist(forgotPassButton);
+		click(forgotPassButton);
 	}
 
 }

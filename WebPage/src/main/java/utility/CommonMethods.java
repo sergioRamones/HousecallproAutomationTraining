@@ -31,6 +31,12 @@ public class CommonMethods {
 		this.driver = driver;
 	}
 	
+	public CommonMethods() {
+		setDriverPaths();
+	}
+	
+	
+	
 	public String getOSName() {
 		if(osName.contains("Mac")) {
 			osName="Mac";
@@ -59,6 +65,10 @@ public class CommonMethods {
 		}
 	}
 	
+	public void setDriver(WebDriver  driver) {
+		this.driver = driver;
+	}
+	
 	public WebDriver chromeDriverConnection(String url) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
 		ChromeOptions option = new ChromeOptions();
@@ -67,14 +77,15 @@ public class CommonMethods {
 		driver = new ChromeDriver(option);
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200));
 		driver.get(url);
+		setDriver(driver);
 		return driver;
 	}
 	
 	public WebDriver edgeDriverConnection(String url) {
 		System.setProperty("webdriver.edge.driver", edgeDriver);
 		EdgeOptions option = new EdgeOptions();
-		option.addArguments("--start-maximized");
-		option.addArguments("--incognito");
+//		option.addArguments("--start-maximized");
+//		option.addArguments("--incognito");
 		driver = new EdgeDriver(option);
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200));
 		driver.get(url);

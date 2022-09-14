@@ -9,13 +9,13 @@ import utility.CommonMethods;
 
 public class PasswordResetPage extends CommonMethods {
 	
-	@FindBy(className="oxd-input oxd-input--active")
+	@FindBy(name ="username")
 	WebElement userNameInput;
 	
-	@FindBy(className="oxd-button oxd-button--large oxd-button--ghost orangehrm-forgot-password-button orangehrm-forgot-password-button--cancel")
+	@FindBy(className = "oxd-button oxd-button--large oxd-button--ghost orangehrm-forgot-password-button orangehrm-forgot-password-button--cancel")
 	WebElement cancelButton;
 	
-	@FindBy(className="oxd-button oxd-button--large oxd-button--secondary orangehrm-forgot-password-button orangehrm-forgot-password-button--reset")
+	@FindBy(xpath="oxd-button oxd-button--large oxd-button--secondary orangehrm-forgot-password-button orangehrm-forgot-password-button--reset")
 	WebElement resetPasswordButton;
 	
 	@FindBy(xpath="//*[text()='Reset Password link sent successfully']")
@@ -26,11 +26,11 @@ public class PasswordResetPage extends CommonMethods {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void validResetPassword(WebElement element1, WebElement element2, WebElement element3, String user) {
-		reviewElementExist(element1);
-		type(user,element1);
-		click(element2);
-		reviewElementExist(element3);
+	public void validResetPassword(String user) {
+		reviewElementExist(userNameInput);
+		type(user,userNameInput);
+		click(resetPasswordButton);
+		reviewElementExist(resetSuccessful);
 		
 		
 	}

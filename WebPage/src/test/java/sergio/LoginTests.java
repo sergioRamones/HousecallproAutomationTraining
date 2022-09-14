@@ -6,17 +6,19 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import hrmOrange.LoginPage;
+import utility.CommonMethods;
 
 public class LoginTests {
 	
 	private WebDriver driver;
 	LoginPage login;
+	CommonMethods commonMethods = new CommonMethods(); 
 	
 	
 	@BeforeTest
 	public void setup() {
-		login = new LoginPage(driver);
-		driver = login.chromeDriverConnection("https://opensource-demo.orangehrmlive.com/");
+
+		driver = commonMethods.chromeDriverConnection("https://opensource-demo.orangehrmlive.com/");
 		login = new LoginPage(driver);
 	}
 	
