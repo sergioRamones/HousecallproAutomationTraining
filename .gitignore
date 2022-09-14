@@ -28,3 +28,7 @@ hs_err_pid*
 *test-output
 .DS_Store
 *chromedriver
+WebPage/bin/pom.xml
+*settings*
+*test-output*
+*bin
