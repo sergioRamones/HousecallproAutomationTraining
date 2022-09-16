@@ -12,14 +12,15 @@ public class PasswordResetPage extends CommonMethods {
 	@FindBy(name ="username")
 	WebElement userNameInput;
 	
-	@FindBy(className = "oxd-button oxd-button--large oxd-button--ghost orangehrm-forgot-password-button orangehrm-forgot-password-button--cancel")
+	@FindBy(xpath = "//button[contains(@class,'cancel')]")
 	WebElement cancelButton;
 	
-	@FindBy(xpath="oxd-button oxd-button--large oxd-button--secondary orangehrm-forgot-password-button orangehrm-forgot-password-button--reset")
+	@FindBy(xpath="//button[contains(@class,'reset')]")
 	WebElement resetPasswordButton;
 	
 	@FindBy(xpath="//*[text()='Reset Password link sent successfully']")
 	WebElement resetSuccessful;
+	
 	
 	public PasswordResetPage(WebDriver driver) {
 		super(driver);
