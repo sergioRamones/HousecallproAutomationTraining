@@ -30,6 +30,15 @@ public class BaseWebTest {
 	enum BrowserNames {
 		CHROME, FIREFOX, SAFARI, EDGE
 	}
+	
+	public BaseWebTest() {
+
+	}
+
+	public BaseWebTest(WebDriver driver) {
+		this.driver = driver;
+	}
+
 
 	public WebDriver setupBrowser(String url) {
 		switch (targetBrowser) {
