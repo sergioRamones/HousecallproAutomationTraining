@@ -6,13 +6,13 @@ import org.testng.annotations.Test;
 
 import hrmOrange.LoginPage;
 import hrmOrange.PasswordResetPage;
-import utility.CommonMethods;
+import utility.BaseWebTest;
 
 public class LoginMikeSelenium {
 	private WebDriver driver;
 	LoginPage login;
 	PasswordResetPage passwordResetPage;
-	CommonMethods commonMethods= new CommonMethods();
+	BaseWebTest baseWebTest= new BaseWebTest();
 	
 	
 	
@@ -20,7 +20,7 @@ public class LoginMikeSelenium {
 	@BeforeTest
 	public void setup() {
 	 
-		driver = commonMethods.chromeDriverConnection("https://opensource-demo.orangehrmlive.com/");
+		driver = baseWebTest.setupBrowser("https://opensource-demo.orangehrmlive.com/");
 		login = new LoginPage(driver);
 		
 	}

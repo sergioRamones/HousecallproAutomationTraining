@@ -1,5 +1,7 @@
 package hrmOrange;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +22,9 @@ public class PasswordResetPage extends CommonMethods {
 	
 	@FindBy(xpath="//*[text()='Reset Password link sent successfully']")
 	WebElement resetSuccessful;
+	
+	@FindBy(xpath="//li[@class='oxd-main-menu-item-wrapper']//span")
+	List<WebElement> retSuccessful;
 	
 	
 	public PasswordResetPage(WebDriver driver) {
